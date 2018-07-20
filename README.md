@@ -1,6 +1,30 @@
-# Machine Learning 1
+# machine-learning-1
 
-Main covered topics:
+Code and notebooks based on the material for the ML1 course I took at the University of Amsterdam.
+
+Install
+-------
+
+Requirements:
+
+- Python
+- Pipenv
+
+
+```shell
+# Create a new environment
+$ pipenv shell
+# Install the requirements
+$ pipenv install --ignore-pipfile
+# Close and open the shell again to update packages
+$ exit
+$ pipenv shell
+# Explore the notebooks
+$ jupyter notebook
+```
+
+Covered topics
+--------------
 
 - [Linear Regression](linear-regression/)
 - Probabilistic Generative Models (Naive Bayes, etc) (classification)
