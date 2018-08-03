@@ -12,12 +12,9 @@ Requirements:
 
 
 ```shell
-# Create a new environment
-$ pipenv shell
-# Install the requirements
-$ pipenv install --ignore-pipfile
-# Close and open the shell again to update packages
-$ exit
+# Install the requirements in a new environment
+$ pipenv install
+# Spawn a shell in the environment
 $ pipenv shell
 # Explore the notebooks
 $ jupyter notebook
