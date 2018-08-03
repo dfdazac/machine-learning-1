@@ -9,6 +9,7 @@ jupyter = "*"
 scipy = "*"
 sklearn = "*"
 matplotlib = "*"
+pytest = "*"
 
 [dev-packages]
 

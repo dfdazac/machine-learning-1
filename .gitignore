@@ -168,7 +168,9 @@ ENV/
 # Temporary MATLAB files
 *.m~
 
+# Tests
+.pytest_cache
+
 # Data folders and files
 
 .DS_store
-
