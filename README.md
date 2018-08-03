@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dfdazac/machine-learning-1.svg?branch=master)](https://travis-ci.org/dfdazac/machine-learning-1)
+
 # machine-learning-1
 
 Code and notebooks based on the material for the ML1 course I took at the University of Amsterdam.
