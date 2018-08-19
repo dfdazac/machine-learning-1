@@ -117,5 +117,3 @@ dependencies:
   - zlib=1.2.11=hf3cbc9b_2
   - zope=1.0=py37_0
   - zope.interface=4.5.0=py37h1de35cc_0
-prefix: /Users/daniel.dazacruz/anaconda3/envs/machine-learning-1
-
