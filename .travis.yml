@@ -19,6 +19,7 @@ install:
   - conda info -a
 
   - conda env create -f environment.yml
+  - source activate machine-learning-1
 
 script:
   - pytest
