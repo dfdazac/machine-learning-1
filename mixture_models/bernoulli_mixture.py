@@ -8,12 +8,13 @@ class BernoulliMixture:
         mu (array): shape (K, D), values to initialize distribution means
         pi (array): shape (K,), values to initialize mixing coefficients
     """
-    def __init__(self, dimensions, n_components, mu=None, pi=None,
+    def __init__(self, dimensions, n_components, mu=None, pi=None, tol=1e-4,
         verbose=False):
         # Initialize distribution parameters
         if mu is None:
             # Random probabilities for each component
-            self.mu = np.random.uniform(low=0.25, high=0.75, size=(n_components, D))
+            self.mu = np.random.uniform(low=0.25, high=0.75,
+                size=(n_components, dimensions))
         else:
             # Ensure that mu does not contain problematic values
             self.mu = np.clip(mu, 1e-12, 1 - 1e-12)
@@ -24,36 +25,39 @@ class BernoulliMixture:
         else:
             self.pi = pi
 
+        self.tol = tol
         self.verbose = verbose
 
-    def fit(X):
+    def fit(self, X, max_iter=100):
         """Find the parameters of the mixture model given the data. It uses
         Expectation Maximization to find maximum likelihood estimates of the
         component means and mixing coefficients.
         Args:
             X (N, D): data
         """
-        if X.shape[1] != mu.shape[1]:
+        if X.shape[1] != self.mu.shape[1]:
             raise ValueError(('Invalid data dimensions, expected {:d},'
-                'got {:d}').format(mu.shape[1], X.shape[1]))
+                'got {:d}').format(self.mu.shape[1], X.shape[1]))
 
         prev_nll = 0
         for i in range(max_iter):
             posterior, nll = self._e_step(X, self.mu, self.pi)
             self.mu, self.pi = self._m_step(X, posterior)
 
+            convergence = np.abs(1 - prev_nll/nll)
+
+            if self.verbose:
+                print('\r{:d}/{:d}  convergence: {:.6f}'.format(i+1,
+                    max_iter, convergence), end='', flush=True)
+
             # Check convergence on the negative log-likelihood
-            if np.abs(prev_nll - nll) < 1:
-                if verbose:
-                    print('Terminating early')
+            if convergence < self.tol:
+                if self.verbose:
+                    print('\nTerminating on convergence.')
                 break
             prev_nll = nll
 
-            if self.verbose:
-                print('\r{:d}/{:d}  NLL: {:.3f}'.format(i+1, max_iter, nll),
-                    end='', flush=True)
-
-    def _e_step(X, mu, pi):
+    def _e_step(self, X, mu, pi):
         """ Performs the E step using the given arrays, calculating the
         posterior probabilities of each component, for each data point.
         N is the number of data points, D the dimensionality of
@@ -95,7 +99,7 @@ class BernoulliMixture:
         # log_posteriors has shape (K, N) so we transpose as needed
         return np.exp(log_posteriors.T), nll
 
-    def _m_step(X, posterior):
+    def _m_step(self, X, posterior):
         """Performs the M step given the data and posterior probabilities,
         calculating the parameters that maximize the likelihood function.
         N is the number of data points, D the dimensionality of
