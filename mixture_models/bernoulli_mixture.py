@@ -1,3 +1,5 @@
+import numpy as np
+
 class BernoulliMixture:
     """A Bernoulli mixture model.
     Args:
