@@ -47,7 +47,7 @@ class BernoulliMixture:
             convergence = np.abs(1 - prev_nll/nll)
 
             if self.verbose:
-                print('\r{:d}/{:d}  convergence: {:.6f}'.format(i+1,
+                print('\rIteration {:d}/{:d},  convergence: {:.6f}'.format(i+1,
                     max_iter, convergence), end='', flush=True)
 
             # Check convergence on the negative log-likelihood
