@@ -25,3 +25,21 @@ def sin_normal_noise(N_samples, N_true=100, std=0.3):
     t = np.sin(2*np.pi*x) + np.random.normal(0, std, N_samples)[:, np.newaxis]
 
     return x_true, t_true, x, t
+
+def gaussian_mixture(N_samples):
+    """Sample data from a Gaussian mixture with two components of mean -2 and 2
+    and unit variance.
+    Args:
+        N_samples: int, the number of samples
+    Returns:
+        X: array, shape (N_samples,), the sampled data
+    """
+    X = np.empty(N_samples)
+    # Choose from components with equal probability
+    idx = np.random.choice([True, False], N_samples)
+    n_1 = np.sum(idx)
+    n_2 = N_samples - n_1
+    # Fill array with samples from both components
+    X[idx] = np.random.normal(-2, size=n_1)
+    X[np.logical_not(idx)] = np.random.normal(2, size=n_2)
+    return X
