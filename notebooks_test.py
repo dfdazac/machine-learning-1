@@ -30,3 +30,6 @@ def test05():
 
 def test06():
     _exec_notebook('06-neural-networks-numpy.ipynb')
+
+def test07():
+    _exec_notebook('07-expectation-maximization.ipynb')
