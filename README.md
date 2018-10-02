@@ -30,9 +30,9 @@ $ jupyter notebook
 - [Dimensionality reduction and classification with Fisher's linear discriminant](04-fisher-example.ipynb)
 - [Principal Component Analysis](05-pca_ex.ipynb)
 - [Neural networks with NumPy](06-neural-networks-numpy.ipynb)
+- [Expectation Maximization](07-expectation-maximization.ipynb)
 
 Upcoming...
 
 - Gaussian Processes
 - Support Vector Machines
-- Mixture Models
