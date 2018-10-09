@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/dfdazac/machine-learning-1.svg?branch=master)](https://travis-ci.org/dfdazac/machine-learning-1)
+[![Build Status](https://travis-ci.org/dfdazac/machine-learning-1.svg?branch=master)](https://travis-ci.org/dfdazac/machine-learning-1) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 
 # machine-learning-1
 
